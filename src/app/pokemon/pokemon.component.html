@@ -1,0 +1,20 @@
+<h2>Our Pokemon</h2>
+<ul class="pokemon">
+  <li *ngFor="let pokemon of shuffle(pokemons)"
+      [class.selected]="pokemon === selectedPokemon"
+      (click)="onSelect(pokemon)">
+    <span class="badge">{{pokemon.id}}</span> {{pokemon.name}}
+  </li>
+</ul>
+
+<h2>{{selectedPokemon.name}} Details</h2>
+<div *ngIf="selectedPokemon">
+  <div><span>id: </span> {{selectedPokemon.id}}</div>
+  <div>
+    <label>name: {{selectedPokemon.name}}</label>
+  </div>
+  <div>
+    <button (click)="rotate()">Poke Spin</button>
+    <img [@rotatedState]="state"  src='../assets/pokemon-icons/{{selectedPokemon.id}}.png' alt='{{selectedPokemon.name}}'>
+  </div>
+</div>
